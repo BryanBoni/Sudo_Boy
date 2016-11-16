@@ -11,4 +11,20 @@ package Model;
  */
 public class GridMatrix {
     
+    private final int width;
+    private final int height;
+    
+    private static int[][] grid;
+
+    public GridMatrix(int width, int height) {
+        this.width = width;
+        this.height = height;
+        grid = new int[width][height];
+        
+        //do line, colum, subgrid
+    }
+    
+    
+    
+    
 }
