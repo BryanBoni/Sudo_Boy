@@ -1,9 +1,11 @@
 package Controller.Cell;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 /**
  * This class represent a cell of our grid, which contain a number between 1 to
@@ -18,8 +20,9 @@ public class CellPlayable extends Cell {
     private int value;
 
     //Graphics varialble of the cell.
-   // private final Rectangle gCell;
+    // private final Rectangle gCell;
     private final TextField gValue;
+    private final Rectangle gCell;
 
     /**
      * Constructor for an empty and playable cell.
@@ -32,18 +35,23 @@ public class CellPlayable extends Cell {
     public CellPlayable(int posX, int posY, int numX, int numY) {
         super(posX, posY, numX, numY);
 
-       /* gCell = new Rectangle(46, 46, Color.WHITE);
+        gCell = new Rectangle(46, 46, Color.BLACK);
         gCell.setArcHeight(5);
         gCell.setArcWidth(5);
-        this.getChildren().add(gCell);*/
+        this.getChildren().add(gCell);
 
         gValue = new TextField();
-        gValue.setMaxSize(46, 46);
-        gValue.setMinSize(46, 46);
+        gValue.setMaxSize(44, 44);
+        gValue.setMinSize(44, 44);
+        gValue.setAlignment(Pos.CENTER);
+        gValue.setFont(Font.font(25));
         this.getChildren().add(gValue);
 
-        this.setTranslateX(posX - 350);
-        this.setTranslateY(posY - 250);
+        this.setTranslateX(posX);
+        this.setTranslateY(posY);
+
+        gCell.setTranslateX(-1);
+        gCell.setTranslateY(-1);
     }
 
     /**
@@ -67,10 +75,15 @@ public class CellPlayable extends Cell {
     }
 
     /**
+     * Return the value of gValue.
      *
      * @return
      */
     public int getValue() {
         return value;
+    }
+
+    public void redCell() {
+
     }
 }
