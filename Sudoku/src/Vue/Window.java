@@ -2,6 +2,7 @@ package Vue;
 
 import Controller.Cell.Cell;
 import Controller.Cell.CellFix;
+import Controller.Cell.CellPlayable;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -34,9 +35,12 @@ public class Window extends Application {
     private void initComponents(Stage primaryStage) {
         root = new StackPane();
         scene = new Scene(root, 800, 600, Color.rgb(42, 42, 42, 1.0));
+        scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
+
+        root.getStyleClass().add("root");
 
         //grid = new Cell[8][8];
-                Rectangle rect;
+        Rectangle rect;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -44,7 +48,7 @@ public class Window extends Application {
                 rect.setTranslateX(150 * i - 300);
                 rect.setTranslateY(150 * j - 200);
                 rect.setStrokeWidth(5);
-                rect.setStroke(Color.BLUE);
+                rect.setStroke(Color.GOLD);
                 rect.setFill(Color.TRANSPARENT);
                 root.getChildren().add(rect);
             }
@@ -53,8 +57,12 @@ public class Window extends Application {
 
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
-                //grid[y][x] = temp;  
-                temp = new CellFix(1, x * 50, y * 50, x, y);
+                if (x == 4 || y == 2) {
+                    temp = new CellFix(1, x * 50, y * 50, x, y);
+                } else {
+                    temp = new CellPlayable(x * 50, y * 50, x, y);
+                }
+
                 root.getChildren().add(temp);
             }
         }
