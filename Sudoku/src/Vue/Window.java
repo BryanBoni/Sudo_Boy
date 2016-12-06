@@ -1,9 +1,6 @@
 package Vue;
 
-import Controller.Cell.Cell;
-import Controller.Cell.CellFix;
-import Controller.Cell.CellPlayable;
-import java.util.ArrayList;
+import Vue.GroupFx.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -19,6 +16,8 @@ public class Window extends Application {
 
     private StackPane root;
     private Scene scene;
+    
+    public GroupFxSudoku gSudoku;
 
     //private Cell[][] grid;
     @Override
@@ -34,39 +33,29 @@ public class Window extends Application {
      */
     private void initComponents(Stage primaryStage) {
         root = new StackPane();
-        scene = new Scene(root, 800, 600, Color.rgb(42, 42, 42, 1.0));
+        scene = new Scene(root, 1000, 600, Color.rgb(42, 42, 42, 1.0));
         scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
 
         root.getStyleClass().add("root");
 
-        //grid = new Cell[8][8];
-        Rectangle rect;
+        //Set the sudoku object.
+        gSudoku = new GroupFxSudoku(-245, -50, 0, 0);
+        root.getChildren().add(gSudoku);
+        
+        
+        //Set the Stats objects
+        Rectangle statsPanel = new Rectangle(460, 250);
+        statsPanel.setTranslateX(230);
+        statsPanel.setTranslateY(-150);
+        statsPanel.setStrokeWidth(2);
+        statsPanel.setStroke(Color.GOLD);
+        statsPanel.setFill(Color.TRANSPARENT);
+        root.getChildren().add(statsPanel);
+        
+        
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                rect = new Rectangle(150, 150);
-                rect.setTranslateX(150 * i - 300);
-                rect.setTranslateY(150 * j - 200);
-                rect.setStrokeWidth(5);
-                rect.setStroke(Color.GOLD);
-                rect.setFill(Color.TRANSPARENT);
-                root.getChildren().add(rect);
-            }
-        }
-        Cell temp;
-
-        for (int y = 0; y < 9; y++) {
-            for (int x = 0; x < 9; x++) {
-                if (x == 4 || y == 2) {
-                    temp = new CellFix(1, x * 50, y * 50, x, y);
-                } else {
-                    temp = new CellPlayable(x * 50, y * 50, x, y);
-                }
-
-                root.getChildren().add(temp);
-            }
-        }
-
+        //Set the controls objects
+        //Set Timer
         primaryStage.setTitle("Sudoku v0.0.1");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
