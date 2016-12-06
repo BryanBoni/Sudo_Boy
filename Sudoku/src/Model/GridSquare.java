@@ -38,30 +38,35 @@ public class GridSquare{
      * @param newValue 
      * @return true if the gridsquare value has been changed to a non-null value, else false
      */
-    public boolean setValue(Integer newValue)
+    public GridSquare setValue(Integer newValue)
     {
+        GridSquare conflictGrid = null;
         if(!locked)
             if(newValue == null)
                 value = newValue;
             else
-                if(checkValue(newValue))
+                if((conflictGrid = checkValue(newValue))== null)
                 {
                     value = newValue;
-                    return true;
                 }
-        return false;
+        return conflictGrid;
     }
     
     /**
-     * This method returns true if value cannot be found in gridsquares of either the column, line or square
+     * This method returns the gridsquare containing the same value in the line, column or square of this gridsquare. return null if value can't be found
      * @param value
      * @return boolean
      */
-    public boolean checkValue(int value)
+    public GridSquare checkValue(int value)
     {
-        if(column.containsValue(value) != null || line.containsValue(value) != null || square.containsValue(value) != null)
-            return false;
-        return true;
+        GridSquare columnGrid, lineGrid, squareGrid;
+        if(( columnGrid = column.containsValue(value)) != null)
+            return columnGrid;
+        if(( lineGrid = line.containsValue(value)) != null)
+            return lineGrid;
+        if(( squareGrid = square.containsValue(value)) != null)
+            return squareGrid;
+        return null;
     }
 
     /**
@@ -109,6 +114,22 @@ public class GridSquare{
         this.locked = locked;
     }
 
+    public Column getColumn()
+    {
+        return column;
+    }
+
+    public Line getLine()
+    {
+        return line;
+    }
+
+    public Square getSquare()
+    {
+        return square;
+    }
+
+    
     
 
     

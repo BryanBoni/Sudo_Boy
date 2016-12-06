@@ -34,6 +34,12 @@ public abstract class Group {
         }
         return null;
     }
+
+    public int getGroupNumber()
+    {
+        return groupNumber;
+    }
+    
     
     /**
      * Add a cell to a group and modify the cell according to the group added
