@@ -15,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 public class GroupFxSudoku extends GroupFx {
 
     public static Cell cellTab[][];
+    public static Cell cellTabBeforRedraw[][];
 
     /**
      * 
@@ -25,7 +26,7 @@ public class GroupFxSudoku extends GroupFx {
      * @param height unused in this function.
      * @param width unused in this function.
      */
-    public GroupFxSudoku(int posX, int posY, int height, int width) {
+    public GroupFxSudoku(int posX, int posY, int width, int height) {
         super(posX, posY, height, width);
         
         cellTab = new Cell[9][9];
@@ -60,5 +61,25 @@ public class GroupFxSudoku extends GroupFx {
         
         this.setTranslateX(posX);
         this.setTranslateY(posY);
+        
+        cellTabBeforRedraw = cellTab;
+    }
+    
+    public void redraw(){
+        //First cleanning the groups from previous cells
+        for(Cell[] cellTabTemp : cellTabBeforRedraw){
+            for(Cell cellTemp : cellTabTemp){
+                this.getChildren().remove(cellTemp);
+            }
+        }
+        
+        //Then adding the new cells.
+        for(Cell[] cellTabTemp : cellTab){
+            for(Cell cellTemp : cellTabTemp){
+                this.getChildren().add(cellTemp);
+            }
+        }
+        
+        cellTabBeforRedraw = cellTab;
     }
 }

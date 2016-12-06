@@ -7,7 +7,7 @@ package Vue.GroupFx;
  */
 public class GroupFxStatistics extends GroupFx{
     
-    public GroupFxStatistics(int posX, int posY, int height, int width) {
+    public GroupFxStatistics(int posX, int posY, int width, int height) {
         super(posX, posY, height, width);
     }
     
