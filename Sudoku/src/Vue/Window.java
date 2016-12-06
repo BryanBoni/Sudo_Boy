@@ -17,7 +17,10 @@ public class Window extends Application {
     private StackPane root;
     private Scene scene;
     
-    public GroupFxSudoku gSudoku;
+    //groups components variables
+    public static GroupFxSudoku gSudoku;
+    public static GroupFxControls gControls;
+    public static GroupFxStatistics gStats;
 
     //private Cell[][] grid;
     @Override
@@ -42,19 +45,23 @@ public class Window extends Application {
         gSudoku = new GroupFxSudoku(-245, -50, 0, 0);
         root.getChildren().add(gSudoku);
         
+       // gSudoku.redraw();
         
         //Set the Stats objects
         Rectangle statsPanel = new Rectangle(460, 250);
         statsPanel.setTranslateX(230);
-        statsPanel.setTranslateY(-150);
+        statsPanel.setTranslateY(-153);
         statsPanel.setStrokeWidth(2);
         statsPanel.setStroke(Color.GOLD);
         statsPanel.setFill(Color.TRANSPARENT);
         root.getChildren().add(statsPanel);
         
-        
 
         //Set the controls objects
+        gControls = new GroupFxControls(230, 140, 460, 250);
+        root.getChildren().add(gControls);
+        
+        
         //Set Timer
         primaryStage.setTitle("Sudoku v0.0.1");
         primaryStage.setScene(scene);

@@ -9,6 +9,9 @@ import javafx.scene.Parent;
  * @author BryanBoni
  */
 public abstract class Cell extends Parent {
+    
+    //Value of the cell
+    private int value;
 
     //Coordinate on the scene.
     private final int posX;
@@ -65,5 +68,18 @@ public abstract class Cell extends Parent {
         return numY;
     }
 
+    /**
+     * 
+     * @return 
+     */
+    public abstract int getValue();
+
+    /**
+     * 
+     * @param value 
+     */
+    public abstract void setValue(int value);
+
+    
     
 }

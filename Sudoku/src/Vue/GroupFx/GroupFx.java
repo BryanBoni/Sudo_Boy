@@ -21,7 +21,7 @@ public abstract class GroupFx extends Parent{
      * @param height
      * @param width 
      */
-    public GroupFx(int posX, int posY, int height, int width) {
+    public GroupFx(int posX, int posY, int width, int height) {
         this.posX = posX;
         this.posY = posY;
         this.height = height;

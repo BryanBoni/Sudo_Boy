@@ -79,11 +79,17 @@ public class CellPlayable extends Cell {
      *
      * @return
      */
+    @Override
     public int getValue() {
-        return value;
+        return Integer.parseInt(gValue.getText());
     }
 
     public void redCell() {
 
+    }
+
+    @Override
+    public void setValue(int value) {
+        gValue.setText(Integer.toString(value));
     }
 }

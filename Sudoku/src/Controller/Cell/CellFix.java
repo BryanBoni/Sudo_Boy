@@ -66,6 +66,7 @@ public class CellFix extends Cell {
      *
      * @return the value of the cell.
      */
+    @Override
     public int getValue() {
         return value;
     }
@@ -77,7 +78,10 @@ public class CellFix extends Cell {
     public void normalCell(){
         gCell2.setFill(Color.BLACK);
     }
-    
-    
+
+    @Override
+    public void setValue(int value) {
+        gValue.setText(Integer.toString(value));
+    }
 
 }
