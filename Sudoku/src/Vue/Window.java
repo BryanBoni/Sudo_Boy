@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -18,7 +21,8 @@ public class Window extends Application {
 
     private StackPane root;
     private Scene scene;
-    
+    public static Text gChrono;
+
     //groups components variables
     public static GroupFxSudoku gSudoku;
     public static GroupFxControls gControls;
@@ -46,46 +50,49 @@ public class Window extends Application {
         //Set the sudoku object.
         gSudoku = new GroupFxSudoku(-245, -50, 0, 0);
         root.getChildren().add(gSudoku);
-        
-       // gSudoku.redraw();
-        
+
+        // gSudoku.redraw();
         //Set the Stats objects
-        gStats = new GroupFxStatistics(230, -153, 460, 250);
+        gStats = new GroupFxStatistics(240, -153, 460, 250);
         root.getChildren().add(gStats);
-        
 
         //Set the controls objects
-        gControls = new GroupFxControls(230, 140, 460, 250);
+        gControls = new GroupFxControls(240, 120, 460, 250);
         root.getChildren().add(gControls);
-        
-        
+
         //Set chrono
-        
+        gChrono = new Text("00 : 00 : 00");
+        gChrono.setFont(Font.font("Courier new", FontWeight.BOLD, 48));
+        gChrono.setTranslateX(-245);
+        gChrono.setTranslateY(230);
+        gChrono.setFill(Color.WHITE);
+        root.getChildren().add(gChrono);
+
         //Test zone
-       /* GroupFxSudoku.cellTab[1][1].redCell();
-        */
         //Stage creation
         primaryStage.setTitle("Sudoku v0.0.1");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        
+
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-          @Override
-          public void handle(WindowEvent we) {
-              if(Window.getgControls().getGame() != null)
-                Window.getgControls().getGame().save();
-          }});
+            @Override
+            public void handle(WindowEvent we) {
+                if (Window.getgControls().getGame() != null) {
+                    Window.getgControls().getGame().save();
+                }
+            }
+        });
     }
 
-    public static GroupFxSudoku getgSudoku(){
+    public static GroupFxSudoku getgSudoku() {
         return gSudoku;
     }
 
-    public static GroupFxControls getgControls(){
+    public static GroupFxControls getgControls() {
         return gControls;
     }
 
-    public static GroupFxStatistics getgStats(){
+    public static GroupFxStatistics getgStats() {
         return gStats;
     }
 
