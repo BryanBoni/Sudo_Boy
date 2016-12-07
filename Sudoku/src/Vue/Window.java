@@ -70,7 +70,7 @@ public class Window extends Application {
 
         //Test zone
         //Stage creation
-        primaryStage.setTitle("Sudoku v0.0.1");
+        primaryStage.setTitle("Sudoku v0.5.1");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
 
@@ -84,16 +84,49 @@ public class Window extends Application {
         });
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static GroupFxSudoku getgSudoku() {
         return gSudoku;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static GroupFxControls getgControls() {
         return gControls;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static GroupFxStatistics getgStats() {
         return gStats;
     }
+
+    /**
+     * 
+     * @return 
+     */
+    public static String getgChrono() {
+        return gChrono.getText();
+    }
+
+    /**
+     * 
+     * @param h
+     * @param m
+     * @param s
+     */
+    public static void setgChrono(int h, int m, int s) {
+        Window.gChrono.setText(h + " : " + m + " : " + s);
+    }
+    
+    
+    
 
 }
