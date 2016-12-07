@@ -24,11 +24,11 @@ public class GridMatrix extends Observable implements Serializable{
         squares = new Square[9];
         grid = new GridSquare[9][9];
         
-        for(int i = 1 ; i <= 9 ; i++)
+        for(int i = 0 ; i <= 8 ; i++)
         {
-            cols[i - 1] = new Column(i);
-            lines[i - 1] = new Line(i);
-            squares[i - 1] = new Square(i);
+            cols[i] = new Column(i);
+            lines[i] = new Line(i);
+            squares[i] = new Square(i);
         }
     }
     /**
@@ -37,15 +37,17 @@ public class GridMatrix extends Observable implements Serializable{
      * @param x Line number
      * @param y Column number
      * @param value Value to put in selected cell
+     * @return 
      */
-    public void changeValue(int x, int y, int value)
+    public GridSquare changeValue(int x, int y, int value)
     {
-        if(grid[x][y].setValue(value))
+        GridSquare conflictGrid;
+        if((conflictGrid = grid[x][y].setValue(value)) == null)
         {
             setChanged();
             notifyObservers();
         }
-        
+        return conflictGrid;
     }
     /**
      * 

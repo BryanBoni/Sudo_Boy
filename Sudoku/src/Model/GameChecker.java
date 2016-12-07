@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Game;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -9,11 +10,15 @@ import java.util.Observer;
  */
 public class GameChecker implements Observer
 {
+    Game game;
+    
     /**
      * Default constructor
+     * @param game
      */
-    public GameChecker()
+    public GameChecker(Game game)
     {
+        this.game = game;
     }
     
     
@@ -63,7 +68,7 @@ public class GameChecker implements Observer
         {
             if(gridCompleted((GridMatrix) o))
             {
-                System.out.println("BRAVO TU AS GAGNE");
+                game.finishGame();
             }
 
         }
