@@ -62,7 +62,8 @@ public class Window extends Application {
         //Set chrono
         
         //Test zone
-        GroupFxSudoku.cellTab[1][1].redCell();
+       /* GroupFxSudoku.cellTab[1][1].redCell();
+        */
         //Stage creation
         primaryStage.setTitle("Sudoku v0.0.1");
         primaryStage.setScene(scene);
