@@ -39,6 +39,7 @@ public class DefaultBuilder implements Builder
                 {
                     tmp.setLocked(false);
                 }
+                grid.getGrid()[posX][posY] = tmp;
             }
         
         return grid;

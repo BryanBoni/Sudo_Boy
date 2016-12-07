@@ -39,7 +39,7 @@ public class GridMatrix extends Observable implements Serializable{
      * @param value Value to put in selected cell
      * @return 
      */
-    public GridSquare changeValue(int x, int y, int value)
+    public GridSquare changeValue(int x, int y, Integer value)
     {
         GridSquare conflictGrid;
         if((conflictGrid = grid[x][y].setValue(value)) == null)

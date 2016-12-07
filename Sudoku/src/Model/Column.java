@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Robin

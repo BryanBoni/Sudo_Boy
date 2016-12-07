@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  *
  * @author BryanBoni
  */
-public abstract class Group {
+public abstract class Group implements Serializable {
     protected int groupNumber;
     protected List<GridSquare> gridSquares;
     

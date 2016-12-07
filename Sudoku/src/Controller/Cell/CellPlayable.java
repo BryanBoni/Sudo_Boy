@@ -1,8 +1,10 @@
 package Controller.Cell;
 
+import Vue.Window;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -18,7 +20,7 @@ import javafx.scene.text.Font;
 public class CellPlayable extends Cell {
 
     private int value;
-
+    private boolean rollback;
     //Graphics varialble of the cell.
     // private final Rectangle gCell;
     private final TextField gValue;
@@ -34,7 +36,8 @@ public class CellPlayable extends Cell {
      */
     public CellPlayable(int posX, int posY, int numX, int numY) {
         super(posX, posY, numX, numY);
-
+        rollback = false;
+        
         gCell = new Rectangle(46, 46, Color.BLACK);
         gCell.setArcHeight(5);
         gCell.setArcWidth(5);
@@ -45,6 +48,48 @@ public class CellPlayable extends Cell {
         gValue.setMinSize(42, 42);
         gValue.setAlignment(Pos.CENTER);
         gValue.setFont(Font.font(25));
+        gValue.textProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+            {
+                if(!rollback)
+                {
+                    if(!newValue.equals(""))
+                    {
+                        try{
+                            value = Integer.parseInt(newValue);
+                            if(!Window.getgControls().getGame().modifyValueOfCell(numX, numY, value))
+                            {
+                                rollback = true;
+                                gValue.setText(oldValue);
+                                if(oldValue.equals(""))
+                                {
+                                    value = 0;
+                                }
+                                else
+                                {
+                                    value = Integer.parseInt(oldValue);
+                                }
+                            }
+                        }
+                        catch(Exception e)
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        value = 0;
+                        Window.getgControls().getGame().modifyValueOfCell(numX, numY, null);
+                    }
+                }
+                else
+                {
+                    rollback = false;
+                }
+            }
+            
+        });
         this.getChildren().add(gValue);
 
         this.setTranslateX(posX+1);
@@ -84,12 +129,10 @@ public class CellPlayable extends Cell {
         return Integer.parseInt(gValue.getText());
     }
 
-
     @Override
     public void redCell() {
         gCell.setFill(Color.ORANGERED);
     }
-
 
     @Override
     public void setValue(int value) {

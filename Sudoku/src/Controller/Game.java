@@ -1,11 +1,14 @@
 
 package Controller;
 
+import Controller.Cell.Cell;
 import Model.Builder;
 import Model.GameChecker;
 import Model.GridMatrix;
 import Model.GridSquare;
 import Model.Saver;
+import Vue.GroupFx.GroupFxSudoku;
+import Vue.Window;
 import javafx.scene.control.Alert;
 
 /**
@@ -16,7 +19,8 @@ public class Game
 {
     private GridMatrix board;
     private GameChecker gamecontroller;
-
+    private GridSquare conflicted;
+    
     public Game()
     {
         board = new Saver().load();
@@ -28,8 +32,11 @@ public class Game
     public Game(Builder builder)
     {
         board = builder.buildGrid();
-        gamecontroller = new GameChecker(this);
-        board.addObserver(gamecontroller);
+        if(board != null)
+        {
+            gamecontroller = new GameChecker(this);
+            board.addObserver(gamecontroller);
+        }
     }
     
     public void finishGame()
@@ -41,13 +48,40 @@ public class Game
         message.show();
     }
     
-    public void modifyValueOfCell(int posX, int posY, int value)
+    public boolean modifyValueOfCell(int posX, int posY, Integer value)
     {
-        GridSquare conflict = board.changeValue(posX, posY, value);
-        if(conflict != null)
+        if(conflicted != null)
         {
-            int PosXConflict = conflict.getLine().getGroupNumber();
-            int PosYConflict = conflict.getColumn().getGroupNumber();
+            if(value == null)
+            {
+                GridSquare conflict = board.changeValue(posX, posY, value);
+                if(conflicted.checkValue(conflicted.getValue()) == null)
+                {
+                    int PosXConflict = conflicted.getLine().getGroupNumber();
+                    int PosYConflict = conflicted.getColumn().getGroupNumber();
+                    Cell[][] tmp = GroupFxSudoku.getCellTab();
+                    tmp[PosXConflict][PosYConflict].normalCell();
+                    conflicted = null;   
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            GridSquare conflict = board.changeValue(posX, posY, value);
+            if(conflict != null)
+            {
+                conflicted = conflict;
+                int PosXConflict = conflict.getLine().getGroupNumber();
+                int PosYConflict = conflict.getColumn().getGroupNumber();
+                Cell[][] tmp = GroupFxSudoku.getCellTab();
+                tmp[PosXConflict][PosYConflict].redCell();
+            }
+            return true;
         }
     }
 
@@ -56,5 +90,11 @@ public class Game
         Saver saver = new Saver();
         saver.save(board);
     }
+
+    public GridMatrix getBoard()
+    {
+        return board;
+    }
+    
     
 }

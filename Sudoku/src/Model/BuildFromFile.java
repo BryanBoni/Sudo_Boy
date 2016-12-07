@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.File;
  import java.util.Scanner;
 
 /**
@@ -17,8 +18,7 @@ public class BuildFromFile implements Builder
     public GridMatrix buildGrid()
     {
         try{
-            Scanner fileStream = new Scanner(path);
-            
+            Scanner fileStream = new Scanner(new File(path));
             GridMatrix grid = new GridMatrix();
             for(int posY = 0 ; posY < 9; posY++)
                 for(int posX = 0; posX < 9 ; posX++)
@@ -38,6 +38,7 @@ public class BuildFromFile implements Builder
                     {
                         tmp.setLocked(false);
                     }
+                    grid.getGrid()[posX][posY] = tmp;
                 }
 
             return grid;
