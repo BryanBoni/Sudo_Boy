@@ -52,35 +52,45 @@ public class CellPlayable extends Cell {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
             {
+
                 if(!rollback)
                 {
-                    if(!newValue.equals(""))
+                    if(!newValue.equals("")&&!newValue.equals("1")&&!newValue.equals("2")&&!newValue.equals("3")&&!newValue.equals("4")&&
+                            !newValue.equals("5")&&!newValue.equals("6")&&!newValue.equals("7")&&!newValue.equals("8")&&!newValue.equals("9"))
                     {
-                        try{
-                            value = Integer.parseInt(newValue);
-                            if(!Window.getgControls().getGame().modifyValueOfCell(numX, numY, value))
-                            {
-                                rollback = true;
-                                gValue.setText(oldValue);
-                                if(oldValue.equals(""))
-                                {
-                                    value = 0;
-                                }
-                                else
-                                {
-                                    value = Integer.parseInt(oldValue);
-                                }
-                            }
-                        }
-                        catch(Exception e)
-                        {
-
-                        }
+                        rollback = true;
+                        gValue.setText(oldValue);
                     }
                     else
                     {
-                        value = 0;
-                        Window.getgControls().getGame().modifyValueOfCell(numX, numY, null);
+                        if(!newValue.equals(""))
+                        {
+                            try{
+                                value = Integer.parseInt(newValue);
+                                if(!Window.getgControls().getGame().modifyValueOfCell(numX, numY, value))
+                                {
+                                    rollback = true;
+                                    gValue.setText(oldValue);
+                                    if(oldValue.equals(""))
+                                    {
+                                        value = 0;
+                                    }
+                                    else
+                                    {
+                                        value = Integer.parseInt(oldValue);
+                                    }
+                                }
+                            }
+                            catch(Exception e)
+                            {
+
+                            }
+                        }
+                        else
+                        {
+                            value = 0;
+                            Window.getgControls().getGame().modifyValueOfCell(numX, numY, null);
+                        }
                     }
                 }
                 else
