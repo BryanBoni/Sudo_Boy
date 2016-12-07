@@ -30,6 +30,7 @@ public class GroupFxControls extends GroupFx {
 
     private String selectedOption;
     private Game game;
+    
     //Buttons
     private Button newGame;
     private Button loadGame;
@@ -42,6 +43,7 @@ public class GroupFxControls extends GroupFx {
     private RadioButton average;
     private RadioButton hard;
     private RadioButton fromFile;
+    
 
     public GroupFxControls(int posX, int posY, int width, int height) {
         super(posX, posY, height, width);
@@ -104,9 +106,8 @@ public class GroupFxControls extends GroupFx {
         this.getChildren().add(loadGame);
 
         Text radioText = new Text("Mode de la nouvelle partie :");
-        radioText.setFont(Font.font("Courier", FontWeight.BOLD, 24));
+        radioText.setFont(Font.font("Courier New", FontWeight.BOLD, 24));
         radioText.setFill(Color.WHITE);
-        radioText.setStroke(Color.BLACK);
         radioText.setTranslateX(10);
         radioText.setTranslateY(100);
         this.getChildren().add(radioText);
@@ -115,20 +116,23 @@ public class GroupFxControls extends GroupFx {
 
         empty = new RadioButton("Vide");
         empty.setUserData("Vide");
+        empty.setFont(Font.font("Courier New", FontWeight.BOLD, 12));
         empty.setToggleGroup(newGameOptions);
         empty.setTranslateX(20);
         empty.setTranslateY(150);
         this.getChildren().add(empty);
 
         easy = new RadioButton("Facile");
-        easy.setUserData("Facile");        
+        easy.setUserData("Facile");  
+        easy.setFont(Font.font("Courier New", FontWeight.BOLD, 12));
         easy.setToggleGroup(newGameOptions);
         easy.setTranslateX(20);
         easy.setTranslateY(120);
         this.getChildren().add(easy);
 
         average = new RadioButton("Moyenne");
-        average.setUserData("Moyenne");        
+        average.setUserData("Moyenne");   
+        average.setFont(Font.font("Courier New", FontWeight.BOLD, 12));
         average.setToggleGroup(newGameOptions);
         average.setTranslateX(120);
         average.setTranslateY(120);
@@ -136,6 +140,7 @@ public class GroupFxControls extends GroupFx {
 
         hard = new RadioButton("Difficile");
         hard.setUserData("Difficile");
+        hard.setFont(Font.font("Courier New", FontWeight.BOLD, 12));
         hard.setToggleGroup(newGameOptions);
         hard.setTranslateX(220);
         hard.setTranslateY(120);
@@ -143,6 +148,7 @@ public class GroupFxControls extends GroupFx {
 
         fromFile = new RadioButton("Charger Fichier");
         fromFile.setUserData("Charger Fichier");
+        fromFile.setFont(Font.font("Courier New", FontWeight.BOLD, 12));
         fromFile.setToggleGroup(newGameOptions);
         fromFile.setTranslateX(120);
         fromFile.setTranslateY(150);
