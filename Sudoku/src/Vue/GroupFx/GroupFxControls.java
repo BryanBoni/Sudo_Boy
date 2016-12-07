@@ -54,6 +54,7 @@ public class GroupFxControls extends GroupFx {
             @Override
             public void handle(ActionEvent e) {
                 //TODO : ROBIN
+                System.out.println("Nouvelle Partie.");
             }
         });
         this.getChildren().add(newGame);
@@ -67,6 +68,7 @@ public class GroupFxControls extends GroupFx {
             @Override
             public void handle(ActionEvent e) {
                 //TODO : ROBIN
+                System.out.println("Charger Partie.");
             }
         });
         this.getChildren().add(loadGame);

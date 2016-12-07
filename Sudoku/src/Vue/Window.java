@@ -48,13 +48,8 @@ public class Window extends Application {
        // gSudoku.redraw();
         
         //Set the Stats objects
-        Rectangle statsPanel = new Rectangle(460, 250);
-        statsPanel.setTranslateX(230);
-        statsPanel.setTranslateY(-153);
-        statsPanel.setStrokeWidth(2);
-        statsPanel.setStroke(Color.GOLD);
-        statsPanel.setFill(Color.TRANSPARENT);
-        root.getChildren().add(statsPanel);
+        gStats = new GroupFxStatistics(230, -153, 460, 250);
+        root.getChildren().add(gStats);
         
 
         //Set the controls objects
@@ -62,10 +57,13 @@ public class Window extends Application {
         root.getChildren().add(gControls);
         
         
-        //Set Timer
+        //Set chrono
+        
+        //Test zone
+        GroupFxSudoku.cellTab[1][1].redCell();
+        //Stage creation
         primaryStage.setTitle("Sudoku v0.0.1");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
     }
-
 }

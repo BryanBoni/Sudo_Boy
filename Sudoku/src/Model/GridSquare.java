@@ -3,7 +3,7 @@ package Model;
 
 /**
  *
- * @author Cloud4Msi
+ * @author BryanBoni
  */
 public class GridSquare{
     private Integer value;

@@ -38,7 +38,7 @@ public class GroupFxSudoku extends GroupFx {
                 rect = new Rectangle(151, 151);
                 rect.setTranslateX(151 * i /*- 400*/);
                 rect.setTranslateY(151 * j/* - 200*/);
-                rect.setStrokeWidth(5);
+                rect.setStrokeWidth(6);
                 rect.setStroke(Color.GOLD);
                 rect.setFill(Color.TRANSPARENT);
                 this.getChildren().add(rect);

@@ -71,10 +71,12 @@ public class CellFix extends Cell {
         return value;
     }
     
+    @Override
     public void redCell(){
-        gCell2.setFill(Color.RED);
+        gCell.setFill(Color.ORANGERED);
     }
     
+    @Override
     public void normalCell(){
         gCell2.setFill(Color.BLACK);
     }

@@ -41,17 +41,17 @@ public class CellPlayable extends Cell {
         this.getChildren().add(gCell);
 
         gValue = new TextField();
-        gValue.setMaxSize(44, 44);
-        gValue.setMinSize(44, 44);
+        gValue.setMaxSize(42, 42);
+        gValue.setMinSize(42, 42);
         gValue.setAlignment(Pos.CENTER);
         gValue.setFont(Font.font(25));
         this.getChildren().add(gValue);
 
-        this.setTranslateX(posX);
-        this.setTranslateY(posY);
+        this.setTranslateX(posX+1);
+        this.setTranslateY(posY+1);
 
-        gCell.setTranslateX(-1);
-        gCell.setTranslateY(-1);
+        gCell.setTranslateX(-2);
+        gCell.setTranslateY(-2);
     }
 
     /**
@@ -84,12 +84,20 @@ public class CellPlayable extends Cell {
         return Integer.parseInt(gValue.getText());
     }
 
-    public void redCell() {
 
+    @Override
+    public void redCell() {
+        gCell.setFill(Color.ORANGERED);
     }
+
 
     @Override
     public void setValue(int value) {
         gValue.setText(Integer.toString(value));
+    }
+
+    @Override
+    public void normalCell() {
+        gCell.setFill(Color.BLACK);
     }
 }

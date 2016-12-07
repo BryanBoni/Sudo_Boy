@@ -1,6 +1,7 @@
 package Controller.Cell;
 
 import javafx.scene.Parent;
+import javafx.scene.paint.Color;
 
 /**
  * This class represent a cell of our grid, which contain a number between 1 to
@@ -80,6 +81,14 @@ public abstract class Cell extends Parent {
      */
     public abstract void setValue(int value);
 
+    /**
+     * Color the cell border in red.
+     */
+    public abstract void redCell();
     
+    /**
+     * Color the cell border in Black.
+     */
+    public abstract void normalCell();
     
 }
