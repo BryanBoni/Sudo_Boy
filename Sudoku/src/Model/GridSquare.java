@@ -1,11 +1,13 @@
 package Model;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Cloud4Msi
  */
-public class GridSquare{
+public class GridSquare implements Serializable{
     private Integer value;
     private boolean locked;
     
@@ -60,11 +62,11 @@ public class GridSquare{
     public GridSquare checkValue(int value)
     {
         GridSquare columnGrid, lineGrid, squareGrid;
-        if(( columnGrid = column.containsValue(value)) != null)
+        if(( columnGrid = column.containsValue(value)) != null && columnGrid != this)
             return columnGrid;
-        if(( lineGrid = line.containsValue(value)) != null)
+        if(( lineGrid = line.containsValue(value)) != null && columnGrid != this)
             return lineGrid;
-        if(( squareGrid = square.containsValue(value)) != null)
+        if(( squareGrid = square.containsValue(value)) != null && columnGrid != this)
             return squareGrid;
         return null;
     }

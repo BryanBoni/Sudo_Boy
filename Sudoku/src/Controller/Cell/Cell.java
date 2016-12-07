@@ -80,6 +80,8 @@ public abstract class Cell extends Parent {
      */
     public abstract void setValue(int value);
 
+    public abstract void redCell();
     
+    public abstract void normalCell();
     
 }

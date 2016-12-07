@@ -3,6 +3,7 @@ package Vue.GroupFx;
 import Controller.Cell.Cell;
 import Controller.Cell.CellFix;
 import Controller.Cell.CellPlayable;
+import Model.GridMatrix;
 import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -82,4 +83,33 @@ public class GroupFxSudoku extends GroupFx {
         
         cellTabBeforRedraw = cellTab;
     }
+    
+    public void setCellTableForRedraw(GridMatrix grid)
+    {
+        for(int i = 0; i < 9; i++)
+            for(int j = 0; j < 9; j++)
+            {
+                if(grid.getGrid()[i][j].isLocked())
+                {
+                    cellTab[i][j] = new CellFix(grid.getGrid()[i][j].getValue(), 
+                            cellTab[i][j].getPosX(), cellTab[i][j].getPosY(), cellTab[i][j].getNumX(), cellTab[i][j].getNumY());
+                }
+                else
+                {
+                    cellTab[i][j] = new CellPlayable(cellTab[i][j].getPosX(), cellTab[i][j].getPosY(), cellTab[i][j].getNumX(), cellTab[i][j].getNumY());
+                }
+            }
+    }
+
+    public static Cell[][] getCellTab()
+    {
+        return cellTab;
+    }
+
+    public static void setCellTab(Cell[][] cellTab)
+    {
+        GroupFxSudoku.cellTab = cellTab;
+    }
+    
+    
 }
