@@ -69,7 +69,7 @@ public class GroupFxControls extends GroupFx {
                 System.out.println("Nouvelle Partie.");
                 
                 String option = getOption();
-                if(option.equals("Vide"))
+                if(option.equals("Facile"))
                     game = new Game(new DefaultBuilder());
                 if(option.equals("Charger Fichier"))
                 {
