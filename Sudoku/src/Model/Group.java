@@ -24,13 +24,14 @@ public abstract class Group implements Serializable {
     /**
      * Check if value is contained in a gridsquare
      * @param value
+     * @param curr
      * @return the gridsquare in which the value is found, else null
      */
-    public GridSquare containsValue(int value)
+    public GridSquare containsValue(int value, GridSquare curr)
     {
         for(GridSquare gs : gridSquares)
         {
-            if(gs.getValue() == value)
+            if(gs.getValue() == value && gs != curr)
                 return gs;
         }
         return null;

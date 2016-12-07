@@ -62,11 +62,11 @@ public class GridSquare implements Serializable{
     public GridSquare checkValue(int value)
     {
         GridSquare columnGrid, lineGrid, squareGrid;
-        if(( columnGrid = column.containsValue(value)) != null && columnGrid != this)
+        if(( columnGrid = column.containsValue(value,this)) != null)
             return columnGrid;
-        if(( lineGrid = line.containsValue(value)) != null && columnGrid != this)
+        if(( lineGrid = line.containsValue(value,this)) != null)
             return lineGrid;
-        if(( squareGrid = square.containsValue(value)) != null && columnGrid != this)
+        if(( squareGrid = square.containsValue(value,this)) != null)
             return squareGrid;
         return null;
     }
