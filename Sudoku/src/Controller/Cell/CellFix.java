@@ -41,7 +41,7 @@ public class CellFix extends Cell {
 
         this.getChildren().add(gCell2);
 
-        gCell = new Rectangle(43, 43, Color.WHITE);
+        gCell = new Rectangle(42, 42, Color.WHITE);
         gCell.setArcHeight(5);
         gCell.setArcWidth(5);
 
@@ -50,16 +50,16 @@ public class CellFix extends Cell {
         gValue = new Text(Integer.toString(value));
         gValue.setFill(Color.BLACK);
 
-        gValue.setFont(Font.font(25));
+        gValue.setFont(Font.font(23));
         gValue.setX(16);
         gValue.setY(30);
         this.getChildren().add(gValue);
 
-        this.setTranslateX(posX);
-        this.setTranslateY(posY);
+        this.setTranslateX(posX+1);
+        this.setTranslateY(posY+1);
         
-        gCell2.setTranslateX(-1);
-        gCell2.setTranslateY(-1);
+        gCell2.setTranslateX(-2);
+        gCell2.setTranslateY(-2);
     }
 
     /**
@@ -73,7 +73,7 @@ public class CellFix extends Cell {
     
     @Override
     public void redCell(){
-        gCell.setFill(Color.ORANGERED);
+        gCell2.setFill(Color.ORANGERED);
     }
     
     @Override

@@ -47,7 +47,7 @@ public class CellPlayable extends Cell {
         gValue.setMaxSize(42, 42);
         gValue.setMinSize(42, 42);
         gValue.setAlignment(Pos.CENTER);
-        gValue.setFont(Font.font(25));
+        gValue.setFont(Font.font(23));
         gValue.textProperty().addListener(new ChangeListener<String>(){
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
