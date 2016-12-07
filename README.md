@@ -13,7 +13,7 @@ Here is our java project which our sudoku program.
     - A drawer for the sudoku : BRYAN
 
 ###Controller
-    - A class intercation between M and C : BRYAN, ROBIN
+    - A class intercation between M and V : BRYAN, ROBIN
 
 ###UML
     - Class diagram : BRYAN, ROBIN
