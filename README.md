@@ -18,4 +18,9 @@ Here is our java project which contain our sudoku program.
 ###UML
     - Class diagram : BRYAN, ROBIN
 
+## Upgrade
+    - Visual difference between cellFix, cellPlayable,
+    - add javaDoc in extention,
+    
+
 ##USEFULL SOURCES
