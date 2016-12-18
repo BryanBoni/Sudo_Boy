@@ -10,10 +10,18 @@ import java.io.File;
 public class BuildFromFile implements Builder
 {
     private String path;
+    /**
+     * Basic constructor
+     * @param path path of the file to build from
+     */
     public BuildFromFile(String path)
     {
         this.path = path;
     }
+    /**
+     * Build a grid from the given file
+     * @return grid
+     */
     @Override
     public GridMatrix buildGrid()
     {

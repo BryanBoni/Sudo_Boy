@@ -115,17 +115,26 @@ public class GridSquare implements Serializable{
     {
         this.locked = locked;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public Column getColumn()
     {
         return column;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public Line getLine()
     {
         return line;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public Square getSquare()
     {
         return square;
