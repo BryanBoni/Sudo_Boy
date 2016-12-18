@@ -1,5 +1,5 @@
 # Sudo_Boy
-Here is our java project which our sudoku program.
+Here is our java project which contain our sudoku program.
 
 ## TODO
 
@@ -17,5 +17,10 @@ Here is our java project which our sudoku program.
 
 ###UML
     - Class diagram : BRYAN, ROBIN
+
+## Upgrade
+    - Visual difference between cellFix, cellPlayable,
+    - add javaDoc in extention,
+    
 
 ##USEFULL SOURCES
