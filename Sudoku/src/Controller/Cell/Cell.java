@@ -24,10 +24,10 @@ public abstract class Cell extends Parent {
     /**
      * Constructor for a cell.
      *
-     * @param posX
-     * @param posY
-     * @param numX
-     * @param numY
+     * @param posX graphical position in X.
+     * @param posY graphical position in Y.
+     * @param numX location in X of the cell in the cellTab.
+     * @param numY location in Y of the cell in the cellTab.
      */
     public Cell(int posX, int posY, int numX, int numY) {
         this.posX = posX;
@@ -38,7 +38,7 @@ public abstract class Cell extends Parent {
 
     /**
      *
-     * @return
+     * @return position in X
      */
     public int getPosX() {
         return posX;
@@ -46,7 +46,7 @@ public abstract class Cell extends Parent {
 
     /**
      *
-     * @return
+     * @return position in Y
      */
     public int getPosY() {
         return posY;
@@ -54,7 +54,7 @@ public abstract class Cell extends Parent {
 
     /**
      * 
-     * @return 
+     * @return location in X in the cellTab.
      */
     public int getNumX() {
         return numX;
@@ -62,31 +62,37 @@ public abstract class Cell extends Parent {
 
     /**
      * 
-     * @return 
+     * @return location in Y in the cellTab.
      */
     public int getNumY() {
         return numY;
     }
 
     /**
+     * an abstract class.
      * 
-     * @return 
+     * @return the value of the cell.
      */
     public abstract int getValue();
 
     /**
+     * an abstract class.
      * 
-     * @param value 
+     * @param value the new value of the cell
      */
     public abstract void setValue(int value);
 
 
     /**
+     * an abstract class.
+     * 
      * Color the cell border in red.
      */
     public abstract void redCell();
     
     /**
+     * an abstract class.
+     * 
      * Color the cell border in Black.
      */
     public abstract void normalCell();

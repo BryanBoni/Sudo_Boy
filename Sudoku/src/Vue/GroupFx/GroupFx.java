@@ -15,11 +15,12 @@ public abstract class GroupFx extends Parent{
     private int width;
 
     /**
+     * General constructor for a group of components.
      * 
-     * @param posX
-     * @param posY
-     * @param height
-     * @param width 
+     * @param posX the position on the scene in X.
+     * @param posY the position on the scene in Y.
+     * @param width the width of the panel.
+     * @param height the height of the panel.
      */
     public GroupFx(int posX, int posY, int width, int height) {
         this.posX = posX;
@@ -30,7 +31,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @return 
+     * @return the position on the scene in X.
      */
     public int getPosX() {
         return posX;
@@ -38,7 +39,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @param posX 
+     * @param posX the new postion on the scene in X
      */
     public void setPosX(int posX) {
         this.posX = posX;
@@ -46,7 +47,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @return 
+     * @return the position on the scene in Y.
      */
     public int getPosY() {
         return posY;
@@ -54,7 +55,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @param posY 
+     * @param posY the new position on the scene in Y.
      */
     public void setPosY(int posY) {
         this.posY = posY;
@@ -62,7 +63,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @return 
+     * @return the height of the panel.
      */
     public int getHeight() {
         return height;
@@ -70,7 +71,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @param height 
+     * @param height the new height value of the panel.
      */
     public void setHeight(int height) {
         this.height = height;
@@ -78,7 +79,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @return 
+     * @return the width of the panel.
      */
     public int getWidth() {
         return width;
@@ -86,7 +87,7 @@ public abstract class GroupFx extends Parent{
 
     /**
      * 
-     * @param width 
+     * @param width the new width value of the panel.
      */
     public void setWidth(int width) {
         this.width = width;

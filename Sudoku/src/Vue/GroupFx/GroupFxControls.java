@@ -45,13 +45,19 @@ public class GroupFxControls extends GroupFx {
     private RadioButton fromFile;
     
 
+    /**
+     * Initiate all the component needed in this panel.
+     * 
+     * @param posX the position on the scene in X.
+     * @param posY the position on the scene in Y.
+     * @param width the width of the panel.
+     * @param height the height of the panel.
+     */
     public GroupFxControls(int posX, int posY, int width, int height) {
         super(posX, posY, height, width);
 
         Rectangle controlsPanel = new Rectangle(width, height);
 
-        //controlsPanel.setTranslateX(0);
-        //controlsPanel.setTranslateY(0);
         controlsPanel.setStrokeWidth(2);
         controlsPanel.setStroke(Color.GOLD);
         controlsPanel.setFill(Color.TRANSPARENT);
@@ -69,8 +75,27 @@ public class GroupFxControls extends GroupFx {
                 System.out.println("Nouvelle Partie.");
                 
                 String option = getOption();
-                if(option.equals("Facile"))
+                if(option.equals("Facile")){
                     game = new Game(new DefaultBuilder());
+                    Window.gStats.setMod("Facile");
+                }
+                
+                if(option.equals("Moyenne")){
+                    //game = new Game(new DefaultBuilder());//ToChange.
+                    Window.gStats.setMod("Moyenne");
+                }
+                
+                if(option.equals("Difficile")){
+                    //game = new Game(new DefaultBuilder());//ToChange.
+                    Window.gStats.setMod("Difficile");
+                }
+                
+                if(option.equals("Vide")){
+                    //game = new Game(new DefaultBuilder());//ToChange.
+                    Window.gStats.setMod("Perso");
+                    Window.getgSudoku().emptySudoku();
+                }
+                
                 if(option.equals("Charger Fichier"))
                 {
                     FileChooser fileChooser = new FileChooser();
@@ -82,6 +107,8 @@ public class GroupFxControls extends GroupFx {
                 GridMatrix board = game.getBoard();
                 Window.getgSudoku().setCellTableForRedraw(board);
                 Window.getgSudoku().redraw();
+                
+                Window.chrono.startPauseTimer(Window.chrono.getTime());
             }
         });
         this.getChildren().add(newGame);
@@ -171,11 +198,19 @@ public class GroupFxControls extends GroupFx {
         });
     }
 
+    /**
+     * 
+     * @return the string of the option selected.
+     */
     public String getOption()
     {
         return selectedOption;
     }
 
+    /**
+     * 
+     * @return the game.
+     */
     public Game getGame()
     {
         return game;

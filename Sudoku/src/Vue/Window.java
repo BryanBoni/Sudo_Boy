@@ -1,12 +1,14 @@
 package Vue;
 
+import Model.Chronometer;
 import Vue.GroupFx.*;
 import javafx.application.Application;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -21,14 +23,14 @@ public class Window extends Application {
 
     private StackPane root;
     private Scene scene;
-    public static Text gChrono;
+    public static Chronometer chrono;
 
     //groups components variables
     public static GroupFxSudoku gSudoku;
     public static GroupFxControls gControls;
     public static GroupFxStatistics gStats;
+    public static Text gChrono;
 
-    //private Cell[][] grid;
     @Override
     public void start(Stage primaryStage) {
         initComponents(primaryStage);
@@ -36,9 +38,9 @@ public class Window extends Application {
     }
 
     /**
-     * Initialise all fix components of our sudoku
+     * Initialise all fix components of our sudoku.
      *
-     * @param primaryStage
+     * @param primaryStage the graphical base of the window.
      */
     private void initComponents(Stage primaryStage) {
         root = new StackPane();
@@ -61,14 +63,22 @@ public class Window extends Application {
         root.getChildren().add(gControls);
 
         //Set chrono
-        gChrono = new Text("00 : 00 : 00");
+        chrono = new Chronometer();
+        gChrono = new Text(chrono.getCurrentTime().get());
+        
+        chrono.getCurrentTime().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                gChrono.setText(chrono.getCurrentTime().get());
+            }
+        });
+        
         gChrono.setFont(Font.font("Courier new", FontWeight.BOLD, 48));
         gChrono.setTranslateX(-245);
         gChrono.setTranslateY(230);
         gChrono.setFill(Color.WHITE);
         root.getChildren().add(gChrono);
 
-        //Test zone
         //Stage creation
         primaryStage.setTitle("Sudoku v0.5.1");
         primaryStage.setScene(scene);
@@ -82,51 +92,31 @@ public class Window extends Application {
                 }
             }
         });
+        
+        chrono.startPauseTimer(chrono.getTime());//Start the timer.
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return the sudoku panel.
      */
     public static GroupFxSudoku getgSudoku() {
         return gSudoku;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return the controls panel.
      */
     public static GroupFxControls getgControls() {
         return gControls;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return the stats panel
      */
     public static GroupFxStatistics getgStats() {
         return gStats;
     }
-
-    /**
-     * 
-     * @return 
-     */
-    public static String getgChrono() {
-        return gChrono.getText();
-    }
-
-    /**
-     * 
-     * @param h
-     * @param m
-     * @param s
-     */
-    public static void setgChrono(int h, int m, int s) {
-        Window.gChrono.setText(h + " : " + m + " : " + s);
-    }
-    
-    
-    
-
 }

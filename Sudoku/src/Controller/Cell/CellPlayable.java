@@ -21,23 +21,21 @@ public class CellPlayable extends Cell {
 
     private int value;
     private boolean rollback;
-    //Graphics varialble of the cell.
-    // private final Rectangle gCell;
     private final TextField gValue;
     private final Rectangle gCell;
 
     /**
      * Constructor for an empty and playable cell.
      *
-     * @param posX
-     * @param posY
-     * @param numX
-     * @param numY
+     * @param posX graphical position in X.
+     * @param posY graphical position in Y.
+     * @param numX location in X of the cell in the cellTab.
+     * @param numY location in Y of the cell in the cellTab.
      */
     public CellPlayable(int posX, int posY, int numX, int numY) {
         super(posX, posY, numX, numY);
         rollback = false;
-        
+
         gCell = new Rectangle(46, 46, Color.BLACK);
         gCell.setArcHeight(5);
         gCell.setArcWidth(5);
@@ -48,52 +46,46 @@ public class CellPlayable extends Cell {
         gValue.setMinSize(42, 42);
         gValue.setAlignment(Pos.CENTER);
         gValue.setFont(Font.font(23));
-        gValue.textProperty().addListener(new ChangeListener<String>(){
+        gValue.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if(!rollback){
-                    if(!newValue.equals("")&&!newValue.equals("1")&&!newValue.equals("2")&&!newValue.equals("3")&&!newValue.equals("4")&&
-                            !newValue.equals("5")&&!newValue.equals("6")&&!newValue.equals("7")&&!newValue.equals("8")&&!newValue.equals("9"))
-                    {
+                if (!rollback) {
+                    if (!newValue.equals("") && !newValue.equals("1") && !newValue.equals("2") && !newValue.equals("3") && !newValue.equals("4")
+                            && !newValue.equals("5") && !newValue.equals("6") && !newValue.equals("7") && !newValue.equals("8") && !newValue.equals("9")) {
                         rollback = true;
                         gValue.setText(oldValue);
-                    }
-                    else{
-                        if(!newValue.equals("")){
-                            try{
+                    } else {
+                        if (!newValue.equals("")) {
+                            try {
                                 value = Integer.parseInt(newValue);
-                                if(!Window.getgControls().getGame().modifyValueOfCell(numX, numY, value)){
+                                if (!Window.getgControls().getGame().modifyValueOfCell(numX, numY, value)) {
                                     rollback = true;
                                     gValue.setText(oldValue);
-                                    if(oldValue.equals("")){
+                                    if (oldValue.equals("")) {
                                         value = 0;
-                                    }
-                                    else{
+                                    } else {
                                         value = Integer.parseInt(oldValue);
                                     }
                                 }
-                            }
-                            catch(Exception e){
+                            } catch (Exception e) {
 
                             }
-                        }
-                        else{
+                        } else {
                             value = 0;
                             Window.getgControls().getGame().modifyValueOfCell(numX, numY, null);
                         }
                     }
-                }
-                else{
+                } else {
                     rollback = false;
                 }
             }
-            
+
         });
         this.getChildren().add(gValue);
 
-        this.setTranslateX(posX+1);
-        this.setTranslateY(posY+1);
+        this.setTranslateX(posX + 1);
+        this.setTranslateY(posY + 1);
 
         gCell.setTranslateX(-2);
         gCell.setTranslateY(-2);
@@ -122,23 +114,34 @@ public class CellPlayable extends Cell {
     /**
      * Return the value of gValue.
      *
-     * @return
+     * @return the value of the cell.
      */
     @Override
     public int getValue() {
         return Integer.parseInt(gValue.getText());
     }
 
+    /**
+     * paint the border of the cell in red.
+     */
     @Override
     public void redCell() {
         gCell.setFill(Color.ORANGERED);
     }
 
+    
+    /**
+     * 
+     * @param value the new value of the cell.
+     */
     @Override
     public void setValue(int value) {
         gValue.setText(Integer.toString(value));
     }
 
+    /**
+     * paint the border of the cell in his normal color (black).
+     */
     @Override
     public void normalCell() {
         gCell.setFill(Color.BLACK);

@@ -18,12 +18,12 @@ public class GroupFxStatistics extends GroupFx {
     private Text bestTime;
 
     /**
-     * Initiate all the component for the player statistics
+     * Initiate all the component for the player statistics.
      * 
-     * @param posX
-     * @param posY
-     * @param width
-     * @param height 
+     * @param posX the position on the scene in X.
+     * @param posY the position on the scene in Y.
+     * @param width the width of the panel.
+     * @param height the height of the panel.
      */
     public GroupFxStatistics(int posX, int posY, int width, int height) {
         super(posX, posY, height, width);
@@ -44,7 +44,7 @@ public class GroupFxStatistics extends GroupFx {
         mod = new Text(" N/A");
         mod.setFont(Font.font("Courier New", FontWeight.BOLD, 24));
         mod.setFill(Color.WHITE);
-        mod.setTranslateX(width*0.75);
+        mod.setTranslateX(width*0.50);
         mod.setTranslateY(24);
         this.getChildren().add(mod);
         
@@ -82,15 +82,16 @@ public class GroupFxStatistics extends GroupFx {
 
     /**
      * 
-     * @return 
+     * @return the current game mod. 
      */
     public Text getMod() {
         return mod;
     }
 
     /**
+     * change the game mod label.
      * 
-     * @param mod 
+     * @param mod the new game mod label. 
      */
     public void setMod(String mod) {
         this.mod.setText(" " + mod);
@@ -114,17 +115,18 @@ public class GroupFxStatistics extends GroupFx {
 
     /**
      * 
-     * @return 
+     * @return the best time.
      */
     public Text getBestTime() {
         return bestTime;
     }
 
     /**
+     * Used to change best recorded value.
      * 
-     * @param h : Hours
-     * @param m : Minutes
-     * @param s : Seconds
+     * @param h  Hours
+     * @param m  Minutes
+     * @param s  Seconds
      */
     public void setBestTime(int h, int m, int s) {
         this.bestTime.setText("  " + Integer.toString(h) + " : " + Integer.toString(m) + " : " + Integer.toString(s));
