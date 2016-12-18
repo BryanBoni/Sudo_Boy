@@ -94,7 +94,7 @@ public class CellPlayable extends Cell {
     /**
      * Used to set the value of a playable cell.
      *
-     * @param value
+     * @param value the new value.
      */
     public void setValue(Integer value) {
 
