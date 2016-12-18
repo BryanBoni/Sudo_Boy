@@ -20,7 +20,9 @@ public class Game
     private GridMatrix board;
     private GameChecker gamecontroller;
     private GridSquare conflicted;
-    
+    /**
+     * Basic constructor : create a game with a board loaded from the save file
+     */
     public Game()
     {
         board = new Saver().load();
@@ -28,7 +30,10 @@ public class Game
         gamecontroller = new GameChecker(this);
         board.addObserver(gamecontroller);
     }
-    
+    /**
+     * Create a game with a board generated from the given builder
+     * @param builder 
+     */
     public Game(Builder builder)
     {
         board = builder.buildGrid();
@@ -38,7 +43,9 @@ public class Game
             board.addObserver(gamecontroller);
         }
     }
-    
+    /**
+     * Create a message window showing that the player won
+     */
     public void finishGame()
     {
         Alert message = new Alert(Alert.AlertType.INFORMATION);
@@ -47,7 +54,14 @@ public class Game
         message.setContentText("Vous avez gagné!");
         message.show();
     }
-    
+    /**
+     * Try to modify the value of a square positionned at x and y in the grid to @param value
+     * The value can't be changed if there's already a conflict
+     * @param posX
+     * @param posY
+     * @param value
+     * @return 
+     */
     public boolean modifyValueOfCell(int posX, int posY, Integer value)
     {
         if(conflicted != null)
@@ -85,12 +99,18 @@ public class Game
         }
     }
 
+    /**
+     * Save the board to the save file
+     */
     public void save()
     {
         Saver saver = new Saver();
         saver.save(board);
     }
-
+    /**
+     * 
+     * @return board 
+     */
     public GridMatrix getBoard()
     {
         return board;

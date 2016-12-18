@@ -36,7 +36,10 @@ public abstract class Group implements Serializable {
         }
         return null;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public int getGroupNumber()
     {
         return groupNumber;

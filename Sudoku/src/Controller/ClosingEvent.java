@@ -18,14 +18,20 @@ import javafx.stage.WindowEvent;
 public class ClosingEvent implements EventHandler<WindowEvent>
 {
     private Game game;
-
+    /**
+     * Create a ClosingEvent watching the given game
+     * @param game 
+     */
     public ClosingEvent(Game game)
     {
         this.game = game;
     }
     
     
-    
+    /**
+     * When the window try to close, call the save function of the game
+     * @param event 
+     */
     @Override
     public void handle(WindowEvent event)
     {
